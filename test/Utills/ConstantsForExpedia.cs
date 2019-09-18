@@ -1,4 +1,4 @@
-﻿namespace Assignment.Utills
+namespace Assignment.Utills
 {
     class ConstantsForExpedia
     {
@@ -28,7 +28,7 @@
         public const string SelectFirstFlight = "//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//button[1]";
         public const string SelectSecondFlight = "//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//button[1]";
         public const string SelectThirdFlight = "//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//button[1]";
-        public const string ContinueBookingBtn = "//button[@id='bookButton']";
+        public const string ContinueBookingBtn = "/html[1]/body[1]/main[1]/section[1]/form[1]";
 
         public const string ConfFirstFlight = "//div[contains(text(),'Delhi (DEL) to Goa (GOI)')]";
         public const string confSecondFlight = "//div[contains(text(),'Goa (GOI) to Mumbai (BOM)')]";
