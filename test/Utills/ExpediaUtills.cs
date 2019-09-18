@@ -1,9 +1,6 @@
-﻿using System;
+using System;
 using OpenQA.Selenium;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using System.Threading;
 
@@ -47,23 +44,30 @@ namespace Assignment.Utills
         public void ConfMsg(string xpath_FstFlight, string xpath_SndFlight, string xpath_TrdFlight)
         {
             string FirstMsg = BasePage.driver.FindElement(By.XPath(xpath_FstFlight)).Text;
-            Assert.AreEqual(FirstMsg.ToLower(), "Delhi(DEL) to Goa(GOI)".ToLower());
+            Assert.AreEqual(FirstMsg.ToLower(), "Delhi (DEL) to Goa (GOI)".ToLower());
             string SecondMsg = BasePage.driver.FindElement(By.XPath(xpath_SndFlight)).Text;
-            Assert.AreEqual(SecondMsg.ToLower(), "Goa(GOI) to Mumbai(BOM)".ToLower());
+            Assert.AreEqual(SecondMsg.ToLower(), "Goa (GOI) to Mumbai (BOM)".ToLower());
             string ThirdMsg = BasePage.driver.FindElement(By.XPath(xpath_TrdFlight)).Text;
-            Assert.AreEqual(ThirdMsg.ToLower(), "Mumbai(BOM) to Delhi(DEL)".ToLower());
+            Assert.AreEqual(ThirdMsg.ToLower(), "Mumbai (BOM) to Delhi (DEL)".ToLower());
         }
 
-        public void TicketAmount(string xpath_Amount1, string xpath_AmountTotal, int number)
+        public void TicketAmount(string xpath_Amount1, string xpath_AmountTotal)
         {
             string Amount_OnePass= BasePage.driver.FindElement(By.XPath(xpath_Amount1)).Text;
             double AmountPerPass = double.Parse(Amount_OnePass.Replace(",", "").Replace("$", ""));
-            double Final = AmountPerPass * number;
+            double Final = AmountPerPass * 4;
 
             string Amount_Total = BasePage.driver.FindElement(By.XPath(xpath_AmountTotal)).Text;
-            double FinalAmount = double.Parse(Amount_OnePass.Replace(",", "").Replace("$", ""));
+            double FinalAmount = double.Parse(Amount_Total.Replace(",", "").Replace("$", ""));
 
             Assert.AreEqual(Final, FinalAmount);
+        }
+
+        public void ChangeTab()
+        {
+            IList<string> tabs = new List<string>(BasePage.driver.WindowHandles);
+            BasePage.driver.SwitchTo().Window(tabs[1]);
+            Thread.Sleep(1000);
         }
     }
 }
