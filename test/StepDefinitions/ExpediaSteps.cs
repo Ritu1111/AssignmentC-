@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using Assignment.Utills;
 using System.Threading;
 
+
 namespace Assignment.StepDefinitions
 {
     [Binding]
@@ -28,6 +29,13 @@ namespace Assignment.StepDefinitions
         {
 
             methods.CheckTitle(ConstantsForExpedia.ExpediaTitle);
+        }
+
+
+        [Then(@"I have clicked on flights button")]
+        public void ThenIHaveClickedOnFlightsButton()
+        {
+            BasePage.driver.FindElement(By.XPath(ConstantsForExpedia.FlightsBtn)).Click();
         }
 
 
@@ -57,47 +65,22 @@ namespace Assignment.StepDefinitions
         }
 
 
-        
-        [When(@"I have cliked on add another flight")]
-        public void WhenIHaveClikedOnAddAnotherFlight()
-        {
-            BasePage.driver.FindElement(By.XPath(ConstantsForExpedia.AddAnotherFlight)).Click();
-            Thread.Sleep(2000);
-        }
-        
-
-
-        [When(@"ENsuring correct information of all three flights")]
-        public void WhenENsuringCorrectInformationOfAllThreeFlights()
-        {
-            ExpUtl.ConfMsg(ConstantsForExpedia.ConfFirstFlight, ConstantsForExpedia.confSecondFlight, ConstantsForExpedia.ConfThirdFlight);
-        }
-
-
-        
-        [Then(@"I have clicked on flights button")]
-        public void ThenIHaveClickedOnFlightsButton()
-        {
-            BasePage.driver.FindElement(By.XPath(ConstantsForExpedia.FlightsBtn)).Click();
-        }
-        
-
 
         [Then(@"I have enterd the adult count")]
         public void ThenIHaveEnterdTheAdultCount()
         {
-            ExpUtl.AddAdults(ConstantsForExpedia.AddPass , ConstantsForExpedia.PassCount, ConstantsForExpedia.AddSymbol, 4);
+            ExpUtl.AddAdults(ConstantsForExpedia.AddPass, ConstantsForExpedia.PassCount, ConstantsForExpedia.AddSymbol, 4);
         }
 
 
-        
+
         [Then(@"I have entered the second destination")]
         public void ThenIHaveEnteredTheSecondDestination()
         {
             ExpUtl.PortSelection(ConstantsForExpedia.SecondsourcePort, "Goa, India");
             ExpUtl.PortSelection(ConstantsForExpedia.SecondDestinationPort, "Mumbai, India");
         }
-        
+
 
 
         [Then(@"I have enterd second departing date")]
@@ -107,14 +90,22 @@ namespace Assignment.StepDefinitions
         }
 
 
-        
+        [When(@"I have cliked on add another flight")]
+        public void WhenIHaveClikedOnAddAnotherFlight()
+        {
+            BasePage.driver.FindElement(By.XPath(ConstantsForExpedia.AddAnotherFlight)).Click();
+            Thread.Sleep(2000);
+        }
+
+
+
         [Then(@"I have entered the third destination")]
         public void ThenIHaveEnteredTheThirdDestination()
         {
             ExpUtl.PortSelection(ConstantsForExpedia.ThirdSourcePort, "Mumbai, India");
             ExpUtl.PortSelection(ConstantsForExpedia.ThirdDestinationPort, "Delhi, India");
         }
-        
+
 
 
         [Then(@"I have enterd third departing date")]
@@ -124,28 +115,40 @@ namespace Assignment.StepDefinitions
         }
 
 
-        
+
         [Then(@"Click On the Search BUtton")]
         public void ThenClickOnTheSearchBUtton()
         {
             BasePage.driver.FindElement(By.XPath(ConstantsForExpedia.SearchBtn)).Click();
         }
-        
+
 
 
         [Then(@"Display the successfull message")]
         public void ThenDisplayTheSuccessfullMessage()
         {
             ExpUtl.SelectFlights(ConstantsForExpedia.SelectFirstFlight, ConstantsForExpedia.SelectSecondFlight, ConstantsForExpedia.SelectThirdFlight);
+            ExpUtl.ChangeTab();
+            ((IJavaScriptExecutor)BasePage.driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight)");
             BasePage.driver.FindElement(By.XPath(ConstantsForExpedia.ContinueBookingBtn)).Click();
+
+           
         }
-        
+
+
+
+        [When(@"ENsuring correct information of all three flights")]
+        public void WhenENsuringCorrectInformationOfAllThreeFlights()
+        {
+            ExpUtl.ConfMsg(ConstantsForExpedia.ConfFirstFlight, ConstantsForExpedia.confSecondFlight, ConstantsForExpedia.ConfThirdFlight);
+        }
+
 
 
         [Then(@"Ensuring the correct amount per person")]
         public void ThenEnsuringTheCorrectAmountPerPerson()
         {
-            ExpUtl.TicketAmount(ConstantsForExpedia.Amount1, ConstantsForExpedia.FinalAmount, 4);
+            ExpUtl.TicketAmount(ConstantsForExpedia.Amount1, ConstantsForExpedia.FinalAmount);
         }
 
 
