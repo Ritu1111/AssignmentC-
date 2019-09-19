@@ -26,7 +26,7 @@ namespace test.StepDefinationFile
             Console.WriteLine(content);
             Deser deserializedProduct = JsonConvert.DeserializeObject<Deser>(content);
 
-            Assert.AreEqual(deserializedProduct.page, 4);
+            Assert.AreEqual(deserializedProduct.page, 2);
             Assert.AreEqual(deserializedProduct.total, 12);
         }
 
