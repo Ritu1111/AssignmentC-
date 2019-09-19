@@ -29,11 +29,5 @@ namespace test.StepDefinationFile
             Assert.AreEqual(deserializedProduct.page, 2);
             Assert.AreEqual(deserializedProduct.total, 12);
         }
-
-        [Then(@"Generate the tokens")]
-        public void ThenGenerateTheTokens()
-        {
-            //
-        }
     }
 }
