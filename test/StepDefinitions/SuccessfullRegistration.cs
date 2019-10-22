@@ -38,10 +38,6 @@ namespace test.StepDefinationFile
             Console.ReadLine();
         }
 
-        [Then(@"Generate the token")]
-        public void ThenGenerateTheToken()
-        {
-            ScenarioContext.Current.Pending();
-        }
+       
     }
 }
